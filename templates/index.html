@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <div class="header bg-dark text-white py-4 text-center">
+        <h1>Movie Genre Prediction</h1>
+    </div>
+    <div class="background-image" style="background-image: url('static/images/background.jpg');"></div>
+    <div class="container mt-4">
+        <h2 class="mb-4">Predict a Movie's Genre</h2>
+        <form method="post" action="/">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><label for="location">Location:</label></td>
+                        <td><input type="text" id="location" name="location" class="form-control" placeholder="Enter location"></td>
+                    
+                        <td><label for="gender">Gender:</label></td>
+                        <td><input type="text" id="gender" name="gender" class="form-control" placeholder="Enter gender"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="age">Age:</label></td>
+                        <td><input type="text" id="age" name="age" class="form-control" placeholder="Enter age"></td>
+                   
+                        <td><label for="credit_score">Credit Score:</label></td>
+                        <td><input type="text" id="credit_score" name="credit_score" class="form-control" placeholder="Enter credit score"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="has_credit_card">Has Credit Card?</label></td>
+                        <td><input type="text" id="has_credit_card" name="has_credit_card" class="form-control" placeholder="Enter 1 or 0"></td>
+                   
+                        <td><label for="balance">Balance:</label></td>
+                        <td><input type="text" id="balance" name="balance" class="form-control" placeholder="Enter balance"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="est_salary">Estimated Salary:</label></td>
+                        <td><input type="text" id="est_salary" name="est_salary" class="form-control" placeholder="Enter estimated salary"></td>
+                   
+                        <td><label for="active_member">Active Member?</label></td>
+                        <td><input type="text" id="active_member" name="active_member" class="form-control" placeholder="Enter 1 or 0"></td>
+                   </tr>
+                   <tr>
+                        <td><label for="tenure">Tenure:</label></td>
+                        <td><input type="text" id="tenure" name="tenure" class="form-control" placeholder="Enter tenure"></td>
+                   
+                        <td><label for="no_of_products">No. of Products:</label></td>
+                        <td><input type="text" id="no_of_products" name="no_of_products" class="form-control" placeholder="Enter no. of products"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Predict Genre</button>
+        </form>
+
+        <div class="genre-container">
+            <h2 class="mt-4">Predicted Genre:</h2>
+            <p>{{genres}}</p>
+        </div>
+    </div>
+    <div class="footer bg-dark text-white py-2 text-center">
+        2023 YourMovieGenrePrediction.com
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

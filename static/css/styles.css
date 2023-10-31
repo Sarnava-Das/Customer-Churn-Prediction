@@ -1,0 +1,161 @@
+   /* Custom CSS */
+   body {
+    /* Set the background image */
+    /* background-image: url('https://watermark.lovepik.com/background/20220325/large/lovepik-sprout-in-the-rain-background-image_402145896.jpg'); Replace 'path_to_your_image.jpg' with the actual path to your image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    font-family: Arial, sans-serif;
+    
+}
+
+/* Add other custom styles here */
+
+    /* Add custom styles here */
+    body {
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+    }
+    .header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px 0;
+    }
+    .container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    /* Style for prediction results */
+    .prediction-result {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    /* Style for the bar chart */
+    .bar-chart {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    /* Style for the Indian map */
+    .indian-map {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    #map {
+        position: relative;
+        height: 85vh;
+        width: 50vw;
+        border: 2px solid rgb(234, 161, 106);
+        margin-left: 1.5em;
+        border-radius: 5px;
+      }
+      
+      #map-legend {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      
+      .legend-marker {
+        display: inline-block;
+        width: 20px;
+        height: 10px;
+        margin-right: 5px;
+      }
+      
+      
+      
+      /* Navbar */
+      
+      
+      .navbutton {
+        color: white;
+      }
+      
+      /* Table Current weather */
+      
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+      
+      th {
+        background-color: #f2f2f2;
+      }
+      
+      /* Style the table header */
+      /* th h1 {
+        font-size: 24px;
+      } */
+      
+      /* Style the temperature value */
+      th h1 sup {
+        font-size: 16px;
+      }
+      
+      /* Style the table data */
+      td b {
+        font-weight: bold;
+      }
+      
+      /* Remove bold for specific data */
+      td:first-child {
+        font-weight: normal;
+      }
+    
+        /* Custom styles for the card */
+        .custom-card {
+          background-color: #f5f5f5;
+          border: none;
+          border-radius: 15px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          padding: 20px;
+      }
+    
+      /* Custom styles for the search form */
+      .custom-search-form {
+          background-color: #fff;
+          border-radius: 5px;
+          padding: 10px;
+          margin-bottom: 20px;
+      }
+    
+    
+    
+      /* Custom styles for the table */
+      .custom-table {
+          width: 100%;
+      }
+    
+      .custom-table th,
+      .custom-table td {
+          padding: 8px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+      }
+    
+      /* Custom styles for temperature */
+      .custom-temperature {
+          font-size: 36px;
+          margin-bottom: 10px;
+      }
+    
+      /* Custom styles for icons */
+      .custom-icon {
+          font-size: 18px;
+          margin-right: 5px;
+      }
