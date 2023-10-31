@@ -4,8 +4,15 @@ from flask import Flask, request, render_template
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
 
+import importlib.util
 
-app = Flask(__name__, template_folder='templates')
+source_file_path = "parent/constants/__init__.py"
+
+spec = importlib.util.spec_from_file_location('__init__', source_file_path)
+source_file = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(source_file)
+
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 
 # Load the pickled model
 with open('D:/Projects/Customer-Churn-Prediction/models/linear_regression_model.pkl', 'rb') as file:
@@ -17,53 +24,58 @@ with open('D:/Projects/Customer-Churn-Prediction/models/label_encoding.pkl', 'rb
     loaded_label_encoder = pickle.load(file)
 
 
-# Define a function to preprocess the input and make predictions
-def predict_genre(df):
-    
-    
+# function to make predictions
+def predict_churn(df):
+  
+    predicted_churn = model.predict(df)
+    if predicted_churn ==1:
+        return 'Customer not retained'
+    elif predicted_churn ==0:
+        return 'Customer retained '
 
-   
-    # predicted_genre = model.predict(credit_score,location,gender,age,tenure,balance,no_of_products,has_credit_card,active_member,est_salary)
-    predicted_genre = model.predict(df)
     
-    return predicted_genre
-
-
+  
 # Define a route to handle the HTML form
 @app.route('/', methods=['GET', 'POST'])
-def predict_movie_genre():
+def predict_customer_churn():
     if request.method == 'POST':
+    
+       
+       
+        encoded_location = loaded_label_encoder['Geography'].transform([request.form['location']])
+        encoded_gender = loaded_label_encoder['Gender'].transform([request.form['gender']])
+
+     
+       
+        if str.lower(request.form['has_credit_card']) == 'yes':
+            credit_card =1
+        elif str.lower(request.form['has_credit_card']) == 'no':
+            credit_card =0
+        
+        if str.lower(request.form['active_member']) == 'yes':
+            active_member =1
+        elif str.lower(request.form['active_member']) == 'no':
+            active_member =0
+
         data = {
          'CreditScore': [int(request.form['credit_score'])],
-            'Geography': [request.form['location']],
-            'Gender': [request.form['gender']],
+            'Geography': [encoded_location],
+            'Gender': [encoded_gender],
             'Age': [int(request.form['age'])],
             'Tenure': [int(request.form['tenure'])],
             'Balance': [float(request.form['balance'])],
             'NumOfProducts': [int(request.form['no_of_products'])],
-            'HasCrCard': [int(request.form['has_credit_card'])],
-            'IsActiveMember': [int(request.form['active_member'])],
+            'HasCrCard': [credit_card],
+            'IsActiveMember': [active_member],
             'EstimatedSalary': [float(request.form['est_salary'])]
         }
         df = pd.DataFrame(data)
-        # location = request.form['location']
-        # gender = request.form['gender']
-        # age = request.form['age']
-        # credit_score = request.form['credit_score']
-        # has_credit_card = request.form['has_credit_card']
-        # balance = request.form['balance']
-        # est_salary = request.form['est_salary']
-        # active_member = request.form['active_member']
-        # tenure = request.form['tenure']
-        # no_of_products = request.form['no_of_products']
-       
-        # predicted_genre = predict_genre(location,gender,age,credit_score,has_credit_card,balance,est_salary,active_member,tenure,no_of_products)
-        predicted_genre = predict_genre(df)
-        # print(predicted_genre)
-        return render_template('index.html', genres=predicted_genre)
+      
+        predicted_churn = predict_churn(df)
+      
+        return render_template('index.html', churn=predicted_churn)
     return render_template('index.html')
 
 # Run the Flask app
 if __name__ == '__main__':
-    # predict_movie_genre()
     app.run()

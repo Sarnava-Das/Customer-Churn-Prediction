@@ -1,0 +1,1 @@
+request.form['has_credit_card']

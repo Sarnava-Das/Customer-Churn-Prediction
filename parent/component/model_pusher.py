@@ -42,17 +42,41 @@ def getfile():
    
    
     train_set_filename=""
+    encoder_file=""
     for filename in path:
-        if(os.path.basename(filename)=='train_processed.csv'): #filename with extension
+        if(os.path.basename(filename)=='train_processed.csv'): 
             train_set_filename=filename
-    return train_set_filename
+        if(os.path.basename(filename)=='Churn_Modelling.csv'):
+            encoder_file=filename  
+    return train_set_filename,encoder_file
 
 def main():
-    train_set_file=getfile()
-      
+    train_set_file,encode_file=getfile()
+   
+    encode_csv=pd.read_csv(encode_file)   
     
+    # Initialize separate label encoders for Geography and Gender
+    geography_label_encoder = LabelEncoder()
+    gender_label_encoder = LabelEncoder()
+
+    # Fit and transform the labels for Geography and Gender
+    geography_label_encoder.fit_transform(encode_csv['Geography'])
+    gender_label_encoder.fit_transform(encode_csv['Gender'])
+
+    # Save the label encoders in a dictionary
+    label_encoders = {
+        'Geography': geography_label_encoder,
+        'Gender': gender_label_encoder
+    }
+
+    # Open the file in binary write mode and save the label encoder
+    with open('D:/Projects/Customer-Churn-Prediction/models/label_encoding.pkl', 'wb') as file:
+        pickle.dump(label_encoders, file)
+
+
     # Select relevant features
-    X=pd.read_csv(train_set_file)
+    X=pd.read_csv(train_set_file)   
+
     # Target variable
     y = X['Exited']
     
@@ -61,21 +85,7 @@ def main():
     
     # Split the data into train and test sets 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    
- 
-    # Initialize a label encoder
-    label_encoder = LabelEncoder()
-
-    # Fit the encoder and transform the labels
-    label_encoder.fit_transform(X_train['Geography'])
-    label_encoder.fit_transform(X_train['Gender'])
-    label_encoder.fit_transform(X_test['Geography'])
-    label_encoder.fit_transform(X_test['Gender'])
-    
-    # Open the file in binary write mode and save the label encoder
-    with open('D:/Projects/Customer-Churn-Prediction/models/label_encoding.pkl', 'wb') as file:
-        pickle.dump(label_encoder, file)
-
+  
     params=tune_model(X_train,y_train)
     train_model(params,X_train,y_train,X_test,y_test)
    

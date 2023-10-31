@@ -1,161 +1,162 @@
-   /* Custom CSS */
-   body {
-    /* Set the background image */
-    /* background-image: url('https://watermark.lovepik.com/background/20220325/large/lovepik-sprout-in-the-rain-background-image_402145896.jpg'); Replace 'path_to_your_image.jpg' with the actual path to your image */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;
-    font-family: Arial, sans-serif;
-    
+/* Font styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background-image: url('../images/download.jpg');
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-position: 30% center; /* Shift the background image to the right */
 }
 
-/* Add other custom styles here */
 
-    /* Add custom styles here */
-    body {
-        background-color: #f4f4f4;
-        font-family: Arial, sans-serif;
-    }
-    .header {
-        background-color: #007bff;
-        color: #fff;
-        padding: 20px 0;
-    }
-    .container {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    /* Style for prediction results */
-    .prediction-result {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    /* Style for the bar chart */
-    .bar-chart {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    /* Style for the Indian map */
-    .indian-map {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    #map {
-        position: relative;
-        height: 85vh;
-        width: 50vw;
-        border: 2px solid rgb(234, 161, 106);
-        margin-left: 1.5em;
-        border-radius: 5px;
-      }
-      
-      #map-legend {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: white;
-        border: 1px solid #ccc;
-        padding: 10px;
-      }
-      
-      .legend-marker {
-        display: inline-block;
-        width: 20px;
-        height: 10px;
-        margin-right: 5px;
-      }
-      
-      
-      
-      /* Navbar */
-      
-      
-      .navbutton {
-        color: white;
-      }
-      
-      /* Table Current weather */
-      
-      table {
-        border-collapse: collapse;
-        width: 100%;
-      }
-      
-      th, td {
-        text-align: left;
-        padding: 8px;
-      }
-      
-      th {
-        background-color: #f2f2f2;
-      }
-      
-      /* Style the table header */
-      /* th h1 {
-        font-size: 24px;
-      } */
-      
-      /* Style the temperature value */
-      th h1 sup {
-        font-size: 16px;
-      }
-      
-      /* Style the table data */
-      td b {
-        font-weight: bold;
-      }
-      
-      /* Remove bold for specific data */
-      td:first-child {
-        font-weight: normal;
-      }
+/* Header styles */
+.Header {
+  background: #87CEEB;
+  text-align: center; /* Horizontal centering */
+ 
+  height: 40px;
+  width:50%;
+  align-items: center; /*Vertically center the header  */
+  border-radius: 5px;
+  color:white;
+  margin: 10px auto; /* Horizontally center the header */
+}
+
+/* Heading styles */
+.Heading h1 {
+  font-size: 2.5em;
+  color: white;
+  
+
+ 
+}
+.Heading h2 {
+  font-size: 1.5em;
+  color: #000;
+  text-align: left;
+}
+
+/* Apply a border to the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style table headers */
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Style alternating rows with different background colors */
+
+table tr:nth-child(odd) 
+{ 
+    background-color: #D1DDF1;
+}
+/* Add some spacing and padding to the table cells */
+td, th {
+  padding: 5px;
+  text-align: left;
+}
+
+/* Add a border to all table cells */
+td, th {
+  border-collapse: collapse;
+}
+
+/* Add hover effect on table rows */
+tr:hover {
+  background-color: #d9d9d9;
+}
+
+
+.button
+{
+background-color: #1bb2e9;
+border: none;
+border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+color: #f4f4f4;
+cursor: pointer;
+font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+height: 50px;
+text-transform: uppercase;
+width: 300px;
+-webkit-appearance:none;
+margin: 5px auto 0 auto; /* Center the button horizontally */
+  display: block; /* Make it a block-level element for horizontal centering */
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  
+}
+.button:hover
+{background-color: #0079ce;
+border: none;
+border-radius: 0px 3px 3px 0px;
+-moz-border-radius: 0px 3px 3px 0px;
+-webkit-border-radius: 0px 3px 3px 0px;
+color: #f4f4f4;
+cursor: pointer;
+height: 50px;
+text-transform: uppercase;
+width: 300px;
+}
     
-        /* Custom styles for the card */
-        .custom-card {
-          background-color: #f5f5f5;
-          border: none;
-          border-radius: 15px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          padding: 20px;
-      }
-    
-      /* Custom styles for the search form */
-      .custom-search-form {
-          background-color: #fff;
-          border-radius: 5px;
-          padding: 10px;
-          margin-bottom: 20px;
-      }
-    
-    
-    
-      /* Custom styles for the table */
-      .custom-table {
-          width: 100%;
-      }
-    
-      .custom-table th,
-      .custom-table td {
-          padding: 8px;
-          text-align: left;
-          border-bottom: 1px solid #ddd;
-      }
-    
-      /* Custom styles for temperature */
-      .custom-temperature {
-          font-size: 36px;
-          margin-bottom: 10px;
-      }
-    
-      /* Custom styles for icons */
-      .custom-icon {
-          font-size: 18px;
-          margin-right: 5px;
-      }
+
+/* central panel styles */
+.CentralPanel {
+
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* subtle shadow */
+  max-width: 800px; 
+  margin: 40px auto 0 auto; /* 80px top margin, horizontally centered */
+}
+
+
+.genre-container {
+  margin-top: 20px;
+}
+
+/* Style the text input box */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Style the text input box when it's in focus (clicked or selected) */
+input[type="text"]:focus {
+  border-color: #007bff; /* Change to your preferred focus color */
+  outline: none; /* Remove the default focus outline (optional) */
+}
+
+/* footer styles */
+.footer {
+  background-color: #87CEEB; 
+  color: #FFF;
+  text-align: center;
+  padding: 10px;
+  position: fixed; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+
+
