@@ -29,13 +29,11 @@ NLTK_DOWNLOAD='punkt'
 NLTK_STOPWORDS='stopwords'
 
 # Model pusher related variables
-
-
-
-
-
-
-
-
-
+MODEL_DIR='models'
+PRED_MODEL_NAME='model.pkl'
+TFIDF_NAME='tfidf_vectorizer.pkl'
+ENCODING_NAME='label_encoding.pkl'
+ENCODING_PATH=os.path.join(ROOT_DIR,MODEL_DIR,ENCODING_NAME)
+TFIDF_PATH=os.path.join(ROOT_DIR,MODEL_DIR,TFIDF_NAME)
+PRED_MODEL_PATH=os.path.join(ROOT_DIR,MODEL_DIR,PRED_MODEL_NAME)
 

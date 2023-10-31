@@ -15,12 +15,12 @@ spec.loader.exec_module(source_file)
 app = Flask(__name__, static_folder='static', static_url_path='/static')
 
 # Load the pickled model
-with open('D:/Projects/Customer-Churn-Prediction/models/linear_regression_model.pkl', 'rb') as file:
+with open(source_file.PRED_MODEL_PATH, 'rb') as file:
     model = pickle.load(file)
 
 
 # Open the file in binary read mode and load the label encoder
-with open('D:/Projects/Customer-Churn-Prediction/models/label_encoding.pkl', 'rb') as file:
+with open(source_file.ENCODING_PATH, 'rb') as file:
     loaded_label_encoder = pickle.load(file)
 
 
