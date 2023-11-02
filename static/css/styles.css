@@ -13,7 +13,8 @@ body {
 
 /* Header styles */
 .Header {
-  background: #87CEEB;
+  background: #007bff;
+  /*  #87CEEB */
   text-align: center; /* Horizontal centering */
  
   height: 40px;
@@ -147,7 +148,7 @@ input[type="text"]:focus {
 
 /* footer styles */
 .footer {
-  background-color: #87CEEB; 
+  background-color: #007bff; 
   color: #FFF;
   text-align: center;
   padding: 10px;
