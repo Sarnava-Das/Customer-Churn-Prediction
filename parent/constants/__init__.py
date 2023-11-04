@@ -3,11 +3,10 @@ import os
 ROOT_DIR = os.getcwd()  #to get current working directory
 
 # Data ingestion related variables
-DATASET_IDENTIFIER = 'hijest/genre-classification-dataset-imdb'
+DATASET_IDENTIFIER = 'shantanudhakadd/bank-customer-churn-prediction'
 DATASET_DIR = "datasets"
 DATASET_DESTINATION_PATH = os.path.join(ROOT_DIR,DATASET_DIR)
-INPUT_ENCODING='ISO-8859-1'
-OUTPUT_ENCODING='utf-8'
+
 
 
 
