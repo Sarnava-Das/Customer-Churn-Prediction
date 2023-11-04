@@ -1,21 +1,26 @@
-
-
 from sklearn.preprocessing import LabelEncoder
-
-
 import os
 import pandas as pd
 import pathlib 
+import importlib.util
+
+# Specify the absolute path to source_file.py
+source_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../constants/__init__.py'))
+
+# Use importlib to import source_file
+spec = importlib.util.spec_from_file_location("__init__", source_file_path)
+source_file = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(source_file)
 
 
 def process_data(data):
     # Imputations
-    data = data.drop(columns=['RowNumber', 'CustomerId', 'Surname'])
+    data = data.drop(columns=[source_file.COLUMN1_IMPUTE, source_file.COLUMN2_IMPUTE, source_file.COLUMN3_IMPUTE])
 
     # Encode categorical variables
     encoder = LabelEncoder()
-    data['Geography'] = encoder.fit_transform(data['Geography'])
-    data['Gender'] = encoder.fit_transform(data['Gender'])
+    data[source_file.COLUMN1_ENCODE] = encoder.fit_transform(data[source_file.COLUMN1_ENCODE])
+    data[source_file.COLUMN2_ENCODE] = encoder.fit_transform(data[source_file.COLUMN2_ENCODE])
 
     return data
 
