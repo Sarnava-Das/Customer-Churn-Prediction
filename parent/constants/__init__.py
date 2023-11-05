@@ -15,13 +15,10 @@ COLUMN1_ENCODE='Geography'
 COLUMN2_ENCODE='Gender'
 
 TRAIN_SET='Churn_Modelling.csv'
-
-
 TRAIN_SET_PROCESSED_NAME='train_processed.csv'
 TRAIN_SET_PROCESSED_PATH=os.path.join(ROOT_DIR,DATASET_DIR,TRAIN_SET_PROCESSED_NAME)
 
-NLTK_DOWNLOAD='punkt'
-NLTK_STOPWORDS='stopwords'
+
 
 # Model pusher related variables
 MODEL_DIR='models'
