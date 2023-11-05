@@ -44,7 +44,7 @@ def batch_processing(data,filename):
     batch_size = 1000  
     processed_data=pd.DataFrame()
     
-    if filename=='Churn_Modelling':
+    if filename==source_file.TRAIN_SET.split('.')[0]:
         for batch_start in range(0, len(data), batch_size):
             batch_end = min(batch_start + batch_size, len(data))
         
@@ -56,7 +56,7 @@ def batch_processing(data,filename):
  
 def main():
   
-    train_file='D:/Projects/Customer-Churn-Prediction/datasets/train_processed.csv'
+    train_file=source_file.TRAIN_SET_PROCESSED_PATH
     
     train_set_file=getfile()
     processed_train=batch_processing(pd.read_csv(train_set_file),os.path.splitext(os.path.basename(train_set_file))[0])
