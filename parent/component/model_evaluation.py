@@ -60,7 +60,7 @@ def lr_model(X_train,y_train,X_test,y_test):
 
 def getfile():
     path=[]
-    for dirname, _, filenames in os.walk('D:/Projects/Customer-Churn-Prediction'): 
+    for dirname, _, filenames in os.walk(source_file.ROOT_DIR): 
         for filename in filenames:
             if(pathlib.Path(os.path.join(dirname, filename)).suffix =='.csv'):
                 path.append(os.path.join(dirname, filename))
@@ -75,9 +75,8 @@ def getfile():
 
 def main():
     train_set_file=getfile()
-   
-   
     X=pd.read_csv(train_set_file)
+    
     # Target variable
     y = X['Exited']
 
