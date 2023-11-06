@@ -7,6 +7,15 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+import importlib.util
+
+# Specify the absolute path to source_file.py
+source_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../constants/__init__.py'))
+
+# Use importlib to import source_file
+spec = importlib.util.spec_from_file_location("__init__", source_file_path)
+source_file = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(source_file)
 
 def gb_model(X_train,y_train,X_test,y_test):
     # Create and train the Gradient Boosting model
@@ -51,7 +60,7 @@ def lr_model(X_train,y_train,X_test,y_test):
 
 def getfile():
     path=[]
-    for dirname, _, filenames in os.walk('D:/Projects/Customer-Churn-Prediction'): #'Projects' is the folder name in which the required files are saved
+    for dirname, _, filenames in os.walk('D:/Projects/Customer-Churn-Prediction'): 
         for filename in filenames:
             if(pathlib.Path(os.path.join(dirname, filename)).suffix =='.csv'):
                 path.append(os.path.join(dirname, filename))
@@ -59,7 +68,7 @@ def getfile():
    
     train_set_filename=""
     for filename in path:
-        if(os.path.basename(filename)=='train_processed.csv'): #filename with extension
+        if(os.path.basename(filename)==source_file.TRAIN_SET_PROCESSED_NAME): 
             train_set_filename=filename
        
     return train_set_filename
