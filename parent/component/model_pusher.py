@@ -1,14 +1,9 @@
 import os
 import pandas as pd
 import pathlib 
-
-
-
-
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
-
 import pickle
 from model_trainer import tune_model
 import importlib.util
@@ -28,14 +23,14 @@ def train_model(best_params,X_train,y_train,X_test,y_test):
     best_rf_model = RandomForestClassifier(random_state=42, **best_params)
     best_rf_model.fit(X_train, y_train)
      # Save the trained model to a pickle file
-    with open('D:/Projects/Customer-Churn-Prediction/models/linear_regression_model.pkl', 'wb') as file:
+    with open(source_file.PRED_MODEL_PATH, 'wb') as file:
         pickle.dump(best_rf_model, file)
 
    
 
 def getfile():
     path=[]
-    for dirname, _, filenames in os.walk('D:/Projects/Customer-Churn-Prediction'): #'Projects' is the folder name in which the required files are saved
+    for dirname, _, filenames in os.walk(source_file.ROOT_DIR): 
         for filename in filenames:
             if(pathlib.Path(os.path.join(dirname, filename)).suffix =='.csv'):
                 path.append(os.path.join(dirname, filename))
