@@ -15,6 +15,10 @@ COLUMN3_IMPUTE ='Surname'
 COLUMN1_ENCODE='Geography'
 COLUMN2_ENCODE='Gender'
 
+PLOT1='HasCrCard'
+PLOT2='IsActiveMember'
+PLOT3='Exited'
+
 TRAIN_SET='Churn_Modelling.csv'
 TRAIN_SET_PROCESSED_NAME='train_processed.csv'
 TRAIN_SET_PROCESSED_PATH=os.path.join(ROOT_DIR,DATASET_DIR,TRAIN_SET_PROCESSED_NAME)

@@ -42,8 +42,8 @@ def predict_customer_churn():
     
        
        
-        encoded_location = loaded_label_encoder['Geography'].transform([request.form['location']])
-        encoded_gender = loaded_label_encoder['Gender'].transform([request.form['gender']])
+        encoded_location = loaded_label_encoder[source_file.COLUMN1_ENCODE].transform([request.form['location']])
+        encoded_gender = loaded_label_encoder[source_file.COLUMN2_ENCODE].transform([request.form['gender']])
 
      
        
