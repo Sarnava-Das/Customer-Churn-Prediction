@@ -28,7 +28,7 @@ def getfile():
     path=[]
     for dirname, _, filenames in os.walk(source_file.ROOT_DIR): 
         for filename in filenames:
-            if(pathlib.Path(os.path.join(dirname, filename)).suffix =='.csv'):
+            if(pathlib.Path(os.path.join(dirname, filename)).suffix ==source_file.TRAIN_SET.split('.')[1]):
                 path.append(os.path.join(dirname, filename))
    
    
