@@ -26,11 +26,10 @@ def process_data(data):
 
 def getfile():
     path=[]
-    for dirname, _, filenames in os.walk(source_file.ROOT_DIR): 
+    for dirname, _, filenames in os.walk(source_file.DATASET_DESTINATION_PATH): 
         for filename in filenames:
-            if(pathlib.Path(os.path.join(dirname, filename)).suffix ==source_file.TRAIN_SET.split('.')[1]):
+            if(pathlib.Path(os.path.join(dirname, filename)).suffix =='.'+source_file.TRAIN_SET.split('.')[1]):
                 path.append(os.path.join(dirname, filename))
-   
    
     train_set_filename=""
     for filename in path:
@@ -39,18 +38,18 @@ def getfile():
         
     return train_set_filename
 
-def batch_processing(data,filename):
+def batch_processing(data):
   
     batch_size = 1000  
     processed_data=pd.DataFrame()
     
-    if filename==source_file.TRAIN_SET.split('.')[0]:
-        for batch_start in range(0, len(data), batch_size):
-            batch_end = min(batch_start + batch_size, len(data))
+    
+    for batch_start in range(0, len(data), batch_size):
+        batch_end = min(batch_start + batch_size, len(data))
         
-            # Get the current batch of data
-            batch_data = data.iloc[batch_start:batch_end]
-            processed_data = pd.concat([processed_data, process_data(batch_data)])
+        # Get the current batch of data
+        batch_data = data.iloc[batch_start:batch_end]
+        processed_data = pd.concat([processed_data, process_data(batch_data)])
 
     return processed_data
  
@@ -59,7 +58,7 @@ def main():
     train_file=source_file.TRAIN_SET_PROCESSED_PATH
     
     train_set_file=getfile()
-    processed_train=batch_processing(pd.read_csv(train_set_file),os.path.splitext(os.path.basename(train_set_file))[0])
+    processed_train=batch_processing(pd.read_csv(train_set_file))
     processed_train.to_csv(train_file, index=False)
   
 if __name__ == "__main__":

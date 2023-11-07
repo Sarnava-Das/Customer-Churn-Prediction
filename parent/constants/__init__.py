@@ -2,7 +2,6 @@ import os
 
 ROOT_DIR = os.getcwd()  #to get current working directory
 
-
 # Data ingestion related variables
 DATASET_IDENTIFIER = 'shantanudhakadd/bank-customer-churn-prediction'
 DATASET_DIR = "datasets"
@@ -24,7 +23,6 @@ TARGET='Exited'
 TRAIN_SET='Churn_Modelling.csv'
 TRAIN_SET_PROCESSED_NAME='train_processed.csv'
 TRAIN_SET_PROCESSED_PATH=os.path.join(ROOT_DIR,DATASET_DIR,TRAIN_SET_PROCESSED_NAME)
-
 
 
 # Model pusher related variables
