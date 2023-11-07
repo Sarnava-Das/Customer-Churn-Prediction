@@ -39,24 +39,23 @@ def getfile():
     train_set_filename=""
     encoder_file=""
     for filename in path:
-        if(os.path.basename(filename)=='train_processed.csv'): 
+        if(os.path.basename(filename)==source_file.TRAIN_SET_PROCESSED_NAME): 
             train_set_filename=filename
-        if(os.path.basename(filename)=='Churn_Modelling.csv'):
+        if(os.path.basename(filename)==source_file.TRAIN_SET):
             encoder_file=filename  
     return train_set_filename,encoder_file
 
 def main():
-    train_set_file,encode_file=getfile()
-   
-    encode_csv=pd.read_csv(encode_file)   
+    train_set_file,encoder_file_name=getfile()
+    encoded_csv=pd.read_csv(encoder_file_name)   
     
     # Initialize separate label encoders for Geography and Gender
     geography_label_encoder = LabelEncoder()
     gender_label_encoder = LabelEncoder()
 
     # Fit and transform the labels for Geography and Gender
-    geography_label_encoder.fit_transform(encode_csv['Geography'])
-    gender_label_encoder.fit_transform(encode_csv['Gender'])
+    geography_label_encoder.fit_transform(encoded_csv[source_file.COLUMN1_ENCODE])
+    gender_label_encoder.fit_transform(encoded_csv[source_file.COLUMN2_ENCODE])
 
     # Save the label encoders in a dictionary
     label_encoders = {
@@ -65,17 +64,14 @@ def main():
     }
 
     # Open the file in binary write mode and save the label encoder
-    with open('D:/Projects/Customer-Churn-Prediction/models/label_encoding.pkl', 'wb') as file:
+    with open(source_file.ENCODING_PATH, 'wb') as file:
         pickle.dump(label_encoders, file)
 
-
-    # Select relevant features
     X=pd.read_csv(train_set_file)   
-
     # Target variable
     y = X['Exited']
     
-    # Exclude the 'Exited' column from the features
+    # Exclude the 'Exited' column from the features to select relevant features
     X = X.drop(columns=['Exited'])
     
     # Split the data into train and test sets 
