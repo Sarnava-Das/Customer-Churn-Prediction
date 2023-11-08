@@ -62,7 +62,7 @@ def getfile():
     path=[]
     for dirname, _, filenames in os.walk(source_file.ROOT_DIR): 
         for filename in filenames:
-            if(pathlib.Path(os.path.join(dirname, filename)).suffix =='.csv'):
+            if(pathlib.Path(os.path.join(dirname, filename)).suffix =='.'+source_file.TRAIN_SET.split('.')[1]):
                 path.append(os.path.join(dirname, filename))
    
    
@@ -78,10 +78,10 @@ def main():
     X=pd.read_csv(train_set_file)
     
     # Target variable
-    y = X['Exited']
+    y = X[source_file.TARGET]
 
     # Exclude the 'Exited' column from the features to select relevant features
-    X = X.drop(columns=['Exited'])
+    X = X.drop(columns=[source_file.TARGET])
     
     # Split the data into train and test sets 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
